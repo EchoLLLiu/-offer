@@ -49,11 +49,38 @@ class Solution:
     	biNeg = biList[::-1]
     	return biNeg
 
+    def NumberOf1_2(self, n):
+        INT_BITS = 32
+        MAX_INT = (1 << (INT_BITS - 1)) - 1
+        if n == 0:
+            return 0
+        count = 0
+        while n != 0:
+            if n < -MAX_INT - 1 or n > MAX_INT:
+                break
+            count += 1
+            n = n & (n-1)
+        return count
+
+    def NumberOf1_3(self, n):
+        INT_BITS = 32
+        MAX_INT = (1 << (INT_BITS - 1)) - 1
+        if n == 0:
+            return 0
+        count, bit = 0, 1
+        while n != 0 and bit <= MAX_INT + 1:
+            if bit & n:
+                count += 1
+                n -= bit
+            bit = bit << 1
+        return count
+
+
 
 if __name__ == '__main__':
-	n = -1
+	n = 7
 	s = Solution()
 	#orgin = s.toBinary(n)
 	#print(orgin)
-	print(s.NumberOf1(n))
+	print(s.NumberOf1_3(n))
 
