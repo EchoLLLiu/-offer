@@ -9,7 +9,7 @@ class ListNode:
         self.next = None 
 
 class Solution:
-    返回从尾部到头部的列表值序列，例如[1,2,3]
+    # 返回从尾部到头部的列表值序列，例如[1,2,3]
     def printListFromTailToHead(self, listNode):
         ''' 遍历链表，将节点值存放在列表中，倒序输出列表 '''
         p = listNode
