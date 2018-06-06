@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 __author__ = 'LY'
-__time__ = '2018/5/24'
+__time__ = '2018/5/30'
 
 # 从上往下打印出二叉树的每个节点，同层节点从左至右打印。
 
@@ -18,9 +18,19 @@ class Solution:
     # 例：[1,[2,[4,[8],[9]],[5]],[3,[6],[7]]] --> 1,2,3,4,5,6,7,8,9
     def PrintFromTopToBottom(self, root):
         if root == None:
-        	return
+        	return []
+        temp = []
+        res = []
+        temp.append(root)
 
-
+        while temp:
+        	currentRoot = temp.pop(0)
+        	res.append(currentRoot.val)
+        	if currentRoot.left:
+        		temp.append(currentRoot.left)
+        	if currentRoot.right:
+        		temp.append(currentRoot.right)
+        return res
 
 def createTree(List):
 	if len(List) == 0:
@@ -47,4 +57,4 @@ if __name__ == '__main__':
 	print("")
 
 	s = Solution()
-	s.PrintFromTopToBottom(tree1)
+	print(s.PrintFromTopToBottom(tree1))
